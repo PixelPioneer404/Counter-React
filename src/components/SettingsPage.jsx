@@ -24,7 +24,8 @@ const SettingsPage = (props) => {
                             <Switch
                                 checked={props.is1Checked}
                                 onChange={() => {
-                                    props.switchToggler(props.setIs1Checked) 
+                                    if (props.count < 0) props.setCount(0)
+                                    props.switchToggler(props.setIs1Checked)
                                 }}
                                 className={`${props.is1Checked ? 'bg-green-500' : 'bg-gray-300'} relative inline-flex h-6 w-10 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none cursor-pointer`}
                             >

@@ -17,7 +17,7 @@ const Body = (props) => {
                             <span className="text-[30px] text-purple-600 font-manrope">{props.count}</span>
                         </p>
                         <div className="aspect-square h-full relative">
-                            <Dropdown toggleMenu={toggleMenu} isOpen={isOpen} diff={props.setDiff}/>
+                            <Dropdown toggleMenu={toggleMenu} isOpen={isOpen} diff={props.setDiff} currentDiff={props.currentDiff}/>
                         </div>
                     </div>
                     <div className="flex gap-3">

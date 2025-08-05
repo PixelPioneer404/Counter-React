@@ -42,8 +42,8 @@ const App = () => {
         />
       </div>
       <Heading className="pointer-events-none" />
-      <Body count={count} countHandler={countHandler} setDiff={setDiff} />
-      <SettingsPage isOpen={isSettingsOpen} setIsOpen={setisSettingsOpen} is1Checked={isBeyondZeroChecked} setIs1Checked={setIsBeyondZeroChecked} switchToggler={switchToggler} />
+      <Body count={count} countHandler={countHandler} setDiff={setDiff} currentDiff={diff} />
+      <SettingsPage isOpen={isSettingsOpen} setIsOpen={setisSettingsOpen} is1Checked={isBeyondZeroChecked} setIs1Checked={setIsBeyondZeroChecked} switchToggler={switchToggler} count={count} setCount={setCount} />
       <Footer year={currenYear} />
     </div>
   );
