@@ -13,13 +13,19 @@
 @import "tailwindcss";
 
 @theme {
-  --font-satoshi: 'Satoshi', sans-serif;
-  --font-manrope: 'Manrope', sans-serif;
-  --font-clash-display: 'Clash Display', sans-serif;
-  --font-supreme: 'Supreme', sans-serif;
-  --font-varuna: 'Varuna', sans-serif;
-  --bg-color: #EAF0F6;
-  --primary-text-color: #edede9;
-  --secondary-text-color: #191923;
-  --accent-color: #191923;
+    --font-satoshi: 'Satoshi', sans-serif;
+    --font-manrope: 'Manrope', sans-serif;
+    --font-clash-display: 'Clash Display', sans-serif;
+    --font-supreme: 'Supreme', sans-serif;
+    --font-varuna: 'Varuna', sans-serif;
+    --bg-color: #EAF0F6;
+    --primary-text-color: #edede9;
+    --secondary-text-color: #191923;
+    --accent-color: #191923;
+}
+
+@layer utilities {
+    .animate-spin-slow {
+        animation: spin 4s linear infinite;
+    }
 }
