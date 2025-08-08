@@ -9,7 +9,7 @@ const SettingsPage = (props) => {
             <div className={`w-screen h-screen z-999 bg-black/30 relative ${props.isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} transition-opacity duration-300 ease-in-out`}>
                 <div onClick={() => { props.setIsOpen(false) }} className="absolute inset-0 z-998 bg-black/40"></div>
                 <div className="z-999 w-[30%] h-[50%] rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white grid grid-rows-[20%_1fr] gap-4">
-                    <span className="absolute top-4 left-3 flex justify-center items-center gap-2 w-19 h-4">
+                    <span className="absolute top-4 left-3 flex justify-start items-center gap-2 w-19 h-4">
                         <span onClick={() => { props.setIsOpen(false) }} className="group h-full aspect-square bg-red-600 rounded-full flex justify-center items-center">
                             <X className='group-hover:opacity-100 opacity-0' size={10} />
                         </span>
