@@ -96,7 +96,7 @@ const App = () => {
       <scoreContext.Provider value={{ randomNumber, setRandomNumber }}>
         <tapContext.Provider value={{ tap, setTap }}>
           <challengeContext.Provider value={{ count, setCount, isStarted, setIsStarted, isBeyondZeroChecked }}>
-            <div className='bg-slate-900 w-screen h-screen relative overflow-hidden touch-manipulation tap-highlight-transparent select-none min-h-screen-mobile safe-area-inset'>
+            <div className='bg-slate-900 w-screen h-[100dvh] relative overflow-hidden touch-manipulation tap-highlight-transparent select-none min-h-screen-mobile safe-area-inset'>
               <img src={bg1} alt="Background" className="absolute inset-0 w-full h-full object-cover z-0" />
               <div onClick={() => { setisSettingsOpen(prev => !prev) }}
                 className="group absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-red-500/20 backdrop-blur-xl cursor-pointer flex items-center justify-center rounded-lg hover:bg-red-500/40 z-50 transition-all duration-300 touch-manipulation">
