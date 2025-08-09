@@ -145,7 +145,7 @@ const ScoreBoard = () => {
     return (
         <>
             <div className={`w-screen h-screen z-999 bg-black/50 absolute top-0 left-0 transition-opacity duration-300 ease-in-out ${openScore ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
-                <div className="overflow-hidden z-999 w-[95%] max-w-sm sm:max-w-md md:max-w-lg lg:w-[60%] xl:w-[50%] 2xl:w-[40%] 3xl:w-[30%] h-[80%] sm:h-[70%] md:h-[60%] lg:h-[50%] rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-2xl border-1 border-white/30 shadow-xl p-4 sm:p-6 md:p-8 lg:p-12 grid grid-rows-[auto_1fr_auto] gap-4 sm:gap-6">
+                <div className="overflow-hidden z-999 w-[95%] lg:w-[40%] h-[80%] sm:h-[70%] md:h-[60%] rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-2xl border-1 border-white/30 shadow-xl p-4 sm:p-6 md:p-8 lg:p-12 grid grid-rows-[auto_1fr_auto] gap-4 sm:gap-6">
                     <div className="absolute -bottom-8 -left-30 z-0 hidden lg:block">
                         <Trophy 
                             size={350}
