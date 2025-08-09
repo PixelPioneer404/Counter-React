@@ -1,13 +1,77 @@
-# Counter-React
-A counter app using React + Vite
+# 🎯 Scorvia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Scorvia** is a fast-paced, minimal, and engaging counter-based game built with **React**, **Tailwind CSS**, and **Vite**. Challenge yourself to tap as efficiently as possible and aim for 100% efficiency!
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo *(Deployed on Vercel)*
+🔗 **[Play Now - scorvia.vercel.app](https://scorvia.vercel.app)**  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📹 Demo Video
+
+https://github.com/user-attachments/assets/48221be3-56d0-4247-946a-e342c6d3bae3
+
+---
+
+## ✨ Features
+- 🖱️ Tap-based counter gameplay
+- 🎨 Clean, responsive UI powered by **TailwindCSS**
+- ⚡ Fast build with **React + Vite**
+- 🌙 Smooth animations & glassmorphism effects
+- 📱 Mobile-friendly design
+
+---
+
+## 📂 Project Structure
+src/
+├── components/     # Reusable UI components
+├── App.jsx         # Main app logic
+├── index.css       # Tailwind styles
+└── main.jsx        # App entry point
+
+---
+
+## 🛠️ Installation & Setup
+```bash
+# 1. Clone the repository
+git clone https://github.com/PixelPioneer404/Scorvia.git
+
+# 2. Navigate into the project
+cd Scorvia
+
+# 3. Install dependencies
+npm install
+
+# 4. Run the development server
+npm run dev
+
+# 5. Build for production
+npm run build
+```
+
+---
+
+
+📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+💡 Future Improvements
+	•	Multiplayer mode
+	•	Global leaderboard
+	•	Themed challenges
+
+---
+
+🤝 Contributing
+
+Pull requests are welcome!
+If you’d like to contribute, please fork the repo and submit a PR.
+
+---
+
+Made with ❤️ by [PixelPioneer404](https://github.com/pixelpioneer404)
