@@ -24,6 +24,13 @@ https://github.com/user-attachments/assets/48221be3-56d0-4247-946a-e342c6d3bae3
 
 ---
 
+## 🛠 Tech Stack
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=react,tailwind,vite,js,vercel,git,github" />
+</p>
+
+---
+
 ## 📂 Project Structure
 ```
 src/
