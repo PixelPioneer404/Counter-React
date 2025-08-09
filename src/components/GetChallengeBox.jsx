@@ -52,7 +52,7 @@ const GetChallengeBox = () => {
 
     return (
         <>
-            <div className="relative bg-white/20 backdrop-blur-md border-1 border-white/30 w-full h-50 rounded-3xl overflow-hidden flex justify-center items-center">
+            <div className="relative bg-white/20 backdrop-blur-md border-1 border-white/30 w-full h-40 sm:h-44 md:h-48 lg:h-50 rounded-2xl sm:rounded-3xl overflow-hidden flex justify-center items-center">
                 <button onClick={() => {
                     if (isStarted && tap === 0) {
                         numberGenerator();
@@ -60,8 +60,8 @@ const GetChallengeBox = () => {
                         setTap(0);
                     }
                 }}
-                    className={`${showedChallenge ? hideRot ? "opacity-30 pointer-events-none" : "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} absolute top-4 right-4 text-white/50 text-[4px] group cursor-pointer`}>
-                    <RotateCcw className='group-hover:-rotate-360 transition-all duration-500 ease-in-out active:-rotate-440' />
+                    className={`${showedChallenge ? hideRot ? "opacity-30 pointer-events-none" : "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} absolute top-3 sm:top-4 right-3 sm:right-4 text-white/50 text-[4px] group cursor-pointer`}>
+                    <RotateCcw className='group-hover:-rotate-360 transition-all duration-500 ease-in-out active:-rotate-440' size={16} />
                 </button>
                 <button onClick={() => {
                     setShowedChallenge(false)
@@ -72,16 +72,16 @@ const GetChallengeBox = () => {
                         setHideButton(false)
                     }, 500)
                 }}
-                    className={`${showedChallenge ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} absolute top-4 left-4 text-white/50 text-[4px] group cursor-pointer hover:scale-110 transition-all duration-500 ease-in-out`}>
-                    <ArrowLeft />
+                    className={`${showedChallenge ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} absolute top-3 sm:top-4 left-3 sm:left-4 text-white/50 text-[4px] group cursor-pointer hover:scale-110 transition-all duration-500 ease-in-out`}>
+                    <ArrowLeft size={16} />
                 </button>
                 <button
                     onClick={startChallenge}
-                    className={`${isStarted || hideButton ? "opacity-0 pointer-events-none" : 'opacity-100 pointer-events-auto'} absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-lg font-satoshi font-medium bg-white/20 backdrop-blur-md border-1 border-white/30 rounded-2xl px-4 py-3 cursor-pointer hover:scale-105 active:scale-95 transition-all duration-500 ease-in-out`}
+                    className={`${isStarted || hideButton ? "opacity-0 pointer-events-none" : 'opacity-100 pointer-events-auto'} absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-md whitespace-nowrap sm:text-base md:text-lg font-satoshi font-medium bg-white/20 backdrop-blur-md border-1 border-white/30 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2 sm:py-3 cursor-pointer hover:scale-105 active:scale-95 transition-all duration-500 ease-in-out`}
                 >
                     Spin a challenge
                 </button>
-                <div className={`${showedChallenge ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} transition-opacity duration-500 ease-in-out`}>
+                <div className={`${showedChallenge ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} transition-opacity duration-500 ease-in-out w-full h-full flex items-center justify-center`}>
                     <ChallengeLayout number={randomNumber} />
                 </div>
             </div>
