@@ -25,12 +25,24 @@ https://github.com/user-attachments/assets/48221be3-56d0-4247-946a-e342c6d3bae3
 ---
 
 ## 📂 Project Structure
+```
 src/
-├── components/     # Reusable UI components
-├── App.jsx         # Main app logic
-├── index.css       # Tailwind styles
-└── main.jsx        # App entry point
-
+├── assets/
+├── components/
+│   ├── Body.jsx
+│   ├── ChallengeLayout.jsx
+│   ├── ChallengeToast.jsx
+│   ├── Dropdown.jsx
+│   ├── Footer.jsx
+│   ├── GetChallengeBox.jsx
+│   ├── Heading.jsx
+│   ├── Info.jsx
+│   ├── ScoreBoard.jsx
+│   └── SettingsPage.jsx
+├── App.jsx
+├── index.css
+└── main.jsx
+```
 ---
 
 ## 🛠️ Installation & Setup
