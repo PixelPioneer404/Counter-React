@@ -18,7 +18,7 @@ const ChallengeToast = ({ message }) => {
                 }
                 {
                     message.type === "ended" && (
-                        <p className="text-white text-sm font-medium font-satoshi">Challenge Cancelled !</p>
+                        <p className="text-white text-sm font-medium font-satoshi">Challenge ended !</p>
                     )
                 }
 

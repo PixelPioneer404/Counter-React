@@ -1,16 +1,27 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import ChallengeLayout from './ChallengeLayout';
 import { ArrowLeft, RotateCcw } from 'lucide-react';
-import { challengeContext, scoreContext, tapContext } from '../App';
+import { challengeContext, resetContext, scoreContext, tapContext } from '../App';
 
 const GetChallengeBox = () => {
 
-    const { setCount, isStarted, setIsStarted, isBeyondZeroChecked } = useContext(challengeContext)
-    const { setTap } = useContext(tapContext)
+    const { count, setCount, isStarted, setIsStarted, isBeyondZeroChecked } = useContext(challengeContext)
+    const { tap, setTap } = useContext(tapContext)
     const { randomNumber, setRandomNumber } = useContext(scoreContext)
+    const { resetCheck, setResetCheck } = useContext(resetContext)
 
     const [showedChallenge, setShowedChallenge] = useState(false);
     const [hideButton, setHideButton] = useState(false)
+    const [hideRot, setHideRot] = useState(false)
+
+    // Reset challenge layout when randomNumber is reset to "0"
+    useEffect(() => {
+        if (resetCheck) {
+            setShowedChallenge(false);
+            setHideButton(false);
+            setResetCheck(false);
+        }
+    }, [resetCheck]);
 
     const numberGenerator = () => {
         let random = 0;
@@ -31,17 +42,25 @@ const GetChallengeBox = () => {
         }, 500);
     }
 
+    useEffect(() => {
+        if (tap !== 0) {
+            setHideRot(true)
+        } else {
+            setHideRot(false)
+        }
+    }, [tap])
+
     return (
         <>
             <div className="relative bg-white/20 backdrop-blur-md border-1 border-white/30 w-full h-50 rounded-3xl overflow-hidden flex justify-center items-center">
                 <button onClick={() => {
-                    numberGenerator();
-                    if (isStarted) {
+                    if (isStarted && tap === 0) {
+                        numberGenerator();
                         setCount(0);
                         setTap(0);
                     }
                 }}
-                    className={`${showedChallenge ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} absolute top-4 right-4 text-white/50 text-[4px] group cursor-pointer`}>
+                    className={`${showedChallenge ? hideRot ? "opacity-30 pointer-events-none" : "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} absolute top-4 right-4 text-white/50 text-[4px] group cursor-pointer`}>
                     <RotateCcw className='group-hover:-rotate-360 transition-all duration-500 ease-in-out active:-rotate-440' />
                 </button>
                 <button onClick={() => {
