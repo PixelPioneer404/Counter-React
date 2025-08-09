@@ -20,42 +20,42 @@ const ScoreBoard = () => {
         const increments = [100, 50, 10, 1];
         const absTarget = Math.abs(targetNum);
         
-        // Dynamic programming with memoization for 100% accuracy
-        const memo = new Map();
+        // Use BFS (Breadth-First Search) to find the absolute minimum
+        // This guarantees we find the optimal solution
+        const queue = [{position: 0, taps: 0}];
+        const visited = new Set([0]);
+        const maxSearchRange = absTarget + 200; // Reasonable bounds
         
-        const minTapsToReach = (current, target, depth = 0) => {
-            // Prevent infinite recursion and optimize for reasonable bounds
-            if (depth > 20 || Math.abs(current) > absTarget + 200) return Infinity;
-            if (current === target) return 0;
+        while (queue.length > 0) {
+            const {position, taps} = queue.shift();
             
-            const key = current;
-            if (memo.has(key)) return memo.get(key);
-            
-            let minTaps = Infinity;
-            
-            // Try each increment/decrement operation
-            for (let inc of increments) {
-                // Try adding
-                const newCurrent1 = current + inc;
-                const taps1 = 1 + minTapsToReach(newCurrent1, target, depth + 1);
-                minTaps = Math.min(minTaps, taps1);
-                
-                // Try subtracting  
-                const newCurrent2 = current - inc;
-                const taps2 = 1 + minTapsToReach(newCurrent2, target, depth + 1);
-                minTaps = Math.min(minTaps, taps2);
+            // Found the target!
+            if (position === absTarget) {
+                return taps;
             }
             
-            memo.set(key, minTaps);
-            return minTaps;
-        };
+            // Try each increment/decrement
+            for (let inc of increments) {
+                // Try adding
+                const newPos1 = position + inc;
+                if (newPos1 <= maxSearchRange && !visited.has(newPos1)) {
+                    visited.add(newPos1);
+                    queue.push({position: newPos1, taps: taps + 1});
+                }
+                
+                // Try subtracting
+                const newPos2 = position - inc;
+                if (newPos2 >= -maxSearchRange && !visited.has(newPos2)) {
+                    visited.add(newPos2);
+                    queue.push({position: newPos2, taps: taps + 1});
+                }
+            }
+        }
         
-        // However, for performance in a real game, let's use a hybrid approach
-        // that's highly accurate but still fast
-        
+        // Fallback: if BFS doesn't find solution (shouldn't happen), use comprehensive approach
         let globalMin = Infinity;
         
-        // 1. Standard greedy approach
+        // Strategy 1: Pure greedy
         let directTaps = 0;
         let remaining = absTarget;
         for (let inc of increments) {
@@ -65,48 +65,47 @@ const ScoreBoard = () => {
         }
         globalMin = Math.min(globalMin, directTaps);
         
-        // 2. Test overshoot with each increment type
-        for (let mainInc of increments) {
-            // Test different overshoot amounts
-            for (let overshootSteps = 1; overshootSteps <= Math.ceil(absTarget / mainInc) + 2; overshootSteps++) {
-                const overshootValue = overshootSteps * mainInc;
-                const correction = Math.abs(overshootValue - absTarget);
-                
-                // Calculate minimum taps for correction
-                let correctionTaps = 0;
-                let correctionRemaining = correction;
-                for (let inc of increments) {
-                    const correctionSteps = Math.floor(correctionRemaining / inc);
-                    correctionTaps += correctionSteps;
-                    correctionRemaining -= correctionSteps * inc;
+        // Strategy 2: Test all overshoot combinations systematically
+        for (let inc100 = 0; inc100 <= Math.ceil(absTarget / 100) + 3; inc100++) {
+            for (let inc50 = 0; inc50 <= Math.ceil((absTarget - inc100 * 100) / 50) + 3; inc50++) {
+                for (let inc10 = 0; inc10 <= Math.ceil((absTarget - inc100 * 100 - inc50 * 50) / 10) + 3; inc10++) {
+                    const current = inc100 * 100 + inc50 * 50 + inc10 * 10;
+                    const diff = Math.abs(current - absTarget);
+                    const inc1needed = diff; // 1s needed to correct
+                    
+                    const totalTaps = inc100 + inc50 + inc10 + inc1needed;
+                    globalMin = Math.min(globalMin, totalTaps);
+                    
+                    // Also test negative correction (if we overshot)
+                    if (current > absTarget) {
+                        const correctionNeeded = current - absTarget;
+                        
+                        // Try correcting with larger increments first
+                        let correctionTaps = 0;
+                        let tempCorrection = correctionNeeded;
+                        
+                        // Correct with 100s
+                        const correct100 = Math.floor(tempCorrection / 100);
+                        correctionTaps += correct100;
+                        tempCorrection -= correct100 * 100;
+                        
+                        // Correct with 50s
+                        const correct50 = Math.floor(tempCorrection / 50);
+                        correctionTaps += correct50;
+                        tempCorrection -= correct50 * 50;
+                        
+                        // Correct with 10s
+                        const correct10 = Math.floor(tempCorrection / 10);
+                        correctionTaps += correct10;
+                        tempCorrection -= correct10 * 10;
+                        
+                        // Correct with 1s
+                        correctionTaps += tempCorrection;
+                        
+                        const totalTapsWithCorrection = inc100 + inc50 + inc10 + correctionTaps;
+                        globalMin = Math.min(globalMin, totalTapsWithCorrection);
+                    }
                 }
-                
-                const totalTaps = overshootSteps + correctionTaps;
-                globalMin = Math.min(globalMin, totalTaps);
-            }
-        }
-        
-        // 3. Test mixed strategies (combinations of different increments)
-        for (let inc1 of increments) {
-            for (let steps1 = 0; steps1 <= Math.ceil(absTarget / inc1) + 1; steps1++) {
-                const value1 = steps1 * inc1;
-                const remaining1 = Math.abs(absTarget - value1);
-                
-                if (remaining1 === 0) {
-                    globalMin = Math.min(globalMin, steps1);
-                    continue;
-                }
-                
-                // Complete with greedy approach for remaining
-                let remainingTaps = 0;
-                let remainingValue = remaining1;
-                for (let inc2 of increments) {
-                    const steps2 = Math.floor(remainingValue / inc2);
-                    remainingTaps += steps2;
-                    remainingValue -= steps2 * inc2;
-                }
-                
-                globalMin = Math.min(globalMin, steps1 + remainingTaps);
             }
         }
         
