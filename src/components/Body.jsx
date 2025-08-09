@@ -62,7 +62,7 @@ const Body = (props) => {
     return (
         <>
             <div className="absolute inset-0 flex justify-center items-center px-4 py-8">
-                <div className="flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 w-full max-w-sm sm:max-w-md lg:w-90 sm:-translate-y-4 md:translate-y-0 lg:translate-y-4 xl:translate-y-8">
+                <div className="flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 w-full max-w-sm sm:max-w-md lg:w-90 translate-y-4 sm:-translate-y-4 md:translate-y-0 lg:translate-y-4 xl:translate-y-8">
                     <div className={`${showToast ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition-opacity duration-200 ease-in-out w-full`}>
                         <ChallengeToast message={toastMessage} />
                     </div>
