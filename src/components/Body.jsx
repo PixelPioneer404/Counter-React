@@ -62,7 +62,7 @@ const Body = (props) => {
     return (
         <>
             <div className="absolute inset-0 flex justify-center items-center px-4 py-8">
-                <div className="flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 w-full max-w-sm sm:max-w-md lg:w-90 -translate-y-4 sm:-translate-y-4 md:translate-y-0 lg:translate-y-4 xl:translate-y-8">
+                <div className="flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 w-full max-w-sm sm:max-w-md lg:w-90 sm:-translate-y-4 md:translate-y-0 lg:translate-y-4 xl:translate-y-8">
                     <div className={`${showToast ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition-opacity duration-200 ease-in-out w-full`}>
                         <ChallengeToast message={toastMessage} />
                     </div>
@@ -82,14 +82,14 @@ const Body = (props) => {
                                 props.countHandler(1)
                                 setIsOpen(false)
                                 if (isStarted) setTap(tap + 1)
-                            }} className="flex-1 px-4 sm:px-4 py-3 sm:py-3 rounded-2xl sm:rounded-3xl shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out bg-green-400 text-white text-sm sm:text-lg md:text-xl font-medium font-sans touch-manipulation">Increment</button>
+                            }} className="flex-1 px-4 sm:px-4 py-3 sm:py-3 rounded-2xl sm:rounded-3xl shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out bg-gradient-to-r from-green-400 to-green-500 text-white text-sm sm:text-lg md:text-xl font-medium font-satoshi touch-manipulation">Increment</button>
 
                             {/* Reset button shows inline on sm and up */}
                             <button onClick={() => {
                                 props.countHandler(2)
                                 setIsOpen(false)
                                 if (isStarted) setTap(0)
-                            }} className="hidden sm:flex flex-1 px-4 sm:px-4 py-3 sm:py-3 rounded-2xl sm:rounded-3xl shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out bg-red-400 text-white text-sm sm:text-lg md:text-xl font-medium font-sans touch-manipulation items-center justify-center">Reset</button>
+                            }} className="hidden sm:flex flex-1 px-4 sm:px-4 py-3 sm:py-3 rounded-2xl sm:rounded-3xl shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out bg-gradient-to-r from-red-400 to-red-500 text-white text-sm sm:text-lg md:text-xl font-medium font-satoshi touch-manipulation items-center justify-center">Reset</button>
 
                             <button onClick={() => {
                                 props.countHandler(3)
@@ -104,7 +104,7 @@ const Body = (props) => {
                                         if (props.count > 0) setTap(tap + 1)
                                     }
                                 }
-                            }} className="flex-1 px-4 sm:px-4 py-3 sm:py-3 rounded-2xl sm:rounded-3xl shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out bg-blue-400 text-white text-sm sm:text-lg md:text-xl font-medium font-sans touch-manipulation">Decrement</button>
+                            }} className="flex-1 px-4 sm:px-4 py-3 sm:py-3 rounded-2xl sm:rounded-3xl shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out bg-gradient-to-r from-blue-400 to-blue-500 text-white text-sm sm:text-lg md:text-xl font-medium font-satoshi touch-manipulation">Decrement</button>
                         </div>
 
                         {/* Bottom row: Reset button full width on mobile only */}
@@ -112,7 +112,7 @@ const Body = (props) => {
                             props.countHandler(2)
                             setIsOpen(false)
                             if (isStarted) setTap(0)
-                        }} className="sm:hidden w-full px-4 py-3 rounded-2xl shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out bg-red-400 text-white text-sm font-medium font-sans touch-manipulation">Reset</button>
+                        }} className="sm:hidden w-full px-4 py-3 rounded-2xl shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out bg-gradient-to-r from-red-400 to-red-500 text-white text-sm font-medium font-satoshi touch-manipulation">Reset</button>
                     </div>
                     <div className="relative flex items-center justify-center w-full">
                         <GetChallengeBox />
@@ -124,3 +124,7 @@ const Body = (props) => {
 };
 
 export default Body;
+
+// className="flex-1 px-4 sm:px-4 py-3 sm:py-3 rounded-2xl sm:rounded-3xl shadow-lg cursor-pointer transition-all duration-300 ease-in-out bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-white text-sm sm:text-lg md:text-xl font-medium font-satoshi touch-manipulation">
+// className="hidden sm:flex flex-1 px-4 sm:px-4 py-3 sm:py-3 rounded-2xl sm:rounded-3xl shadow-lg cursor-pointer transition-all duration-300 ease-in-out bg-gradient-to-r from-red-400 to-red-500 hover:from-red-500 hover:to-red-600 text-white text-sm sm:text-lg md:text-xl font-medium font-satoshi touch-manipulation items-center justify-center">
+// className="flex-1 px-4 sm:px-4 py-3 sm:py-3 rounded-2xl sm:rounded-3xl shadow-lg cursor-pointer transition-all duration-300 ease-in-out bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white text-sm sm:text-lg md:text-xl font-medium font-satoshi">
